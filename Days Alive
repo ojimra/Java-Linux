@@ -1,0 +1,14 @@
+
+#!/bin/bash
+#daysAlive
+
+
+EDATE=$(date +%s)
+SDATE=$(date -d '01/18/1993' +%s)
+SALIVE=$(($EDATE -$SDATE))
+DALIVE=$((SALIVE/86400))
+TENDAYS=$(($SDATE + 864000000))
+TDATE=$(date -d '@ '$TENDAYS' ' +%m/%d/%Y)
+echo "You have been alive " $DALIVE "days"
+
+echo "10000 days for you is " $TDATE
