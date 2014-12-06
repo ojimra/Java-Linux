@@ -1,0 +1,54 @@
+ This is a Linux script that creates a googlemaps webpage that plots all the points from a database.
+I had to be careful which type of quotes ' or " I used in order to avoid getting an error.
+
+
+echo '<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZQuzBnj1ntjaathxyiZ99KVwbUbxASqE">
+    </script>' > accessmapper.html
+
+echo '  <script type="text/javascript">
+      function initialize() {
+                var mapOptions = {
+          center: { lat: 37.7406, lng: -121.1283},
+          zoom: 11
+        };
+        '>>accessmapper.html
+        echo "var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);" >> accessmapper.html
+
+y='point'
+z='I'
+for x in $(echo 'select ip from visitors3;' | sqlite3 /home/armijoj/inclass/ipvisitors.sqlite)
+do
+        y+=$z
+        echo -n "var ">> accessmapper.html
+        echo -n         $y >> accessmapper.html
+        echo -n " = new google.maps.Marker({
+                position: {lat: ">> accessmapper.html
+        echo -n $(echo "select latitude from visitors3 where ip = '${x}';" | sqlite3 /home/armijoj/inclass/ipvisitors.sqlite)>>accessmapper.html
+        echo -n ", lng: ">> accessmapper.html
+        echo -n $(echo "select longitude from visitors3 where ip = '${x}';" | sqlite3 /home/armijoj/inclass/ipvisitors.sqlite)>>accessmapper.html
+        echo -n "},
+                map: map,
+        });
+
+
+">>accessmapper.html
+done
+
+echo " }
+ google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+">>accessmapper.html
+
+echo '<div id="map-canvas"></div>
+  </body>
+</html>' >> accessmapper.html
