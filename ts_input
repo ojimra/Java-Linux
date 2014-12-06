@@ -1,0 +1,11 @@
+#!/bin/bash
+# ts_input
+
+echo $TD
+echo "Enter project code and a brief description"
+read INPVAR
+echo -n $TD "| " >> timesheet.log
+echo $INPVAR >> timesheet.log
+echo "Done."
+/$HOME/inclass/ts_mkweb
+#eof
