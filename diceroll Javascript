@@ -1,0 +1,57 @@
+var diceRoll = function () {
+        "use strict";
+        return 1 + Math.floor(6 * Math.random());
+    };
+
+
+
+function multiRoll(form) {
+    "use strict";
+    //declare variables
+    var roll, allRolls, numRolls, i, n;
+    var face1 = new Image();
+    face1.src ="http://www.serenapowers.com/img/dice1.jpg";
+    var face2 = new Image();
+    face2.src ="http://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Dice-2-b.svg/120px-Dice-2-b.svg.png";
+    var face3 = new Image();
+    face3.src ="http://www.serenapowers.com/img/dice3.jpg";
+    var face4 = new Image();
+    face4.src ="http://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Dice-4-b.svg/120px-Dice-4-b.svg.png";
+    var face5 = new Image();
+    face5.src ="http://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Dice-5.svg/120px-Dice-5.svg.png";
+    var face6 = new Image();
+    face6.src ="http://4.bp.blogspot.com/-PWtnEpdiasM/Tfz1765y0uI/AAAAAAAAAEk/Z6ebr0SJNhI/s200/Dice6.jpg";
+    allRolls = "";
+    
+    numRolls = form.myinput.value;
+    for (i = 0; i < numRolls; i++) {
+        roll = String(diceRoll());
+        allRolls = allRolls + roll + ", ";
+        //set images
+        if (roll == 1){
+          document.images["mydice"+i].src=face1.src;
+        }
+        if (roll == 2){
+          document.images["mydice"+i].src=face2.src;
+        }
+        if (roll == 3){
+          document.images["mydice"+i].src=face3.src;
+        }
+        if (roll == 4){
+          document.images["mydice"+i].src=face4.src;
+        }
+        if (roll == 5){
+          document.images["mydice"+i].src=face5.src;
+        }
+        if (roll == 6){
+          document.images["mydice"+i].src=face6.src;
+        }
+        
+        //clear images if not needed i.e. number less than 9
+        for (n = numRolls;  n < 9; n++) {
+          document.images["mydice"+n].src= "";
+        }
+    }
+    
+    form.rolls.value = allRolls;
+}
