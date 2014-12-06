@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>
+		DiceRoll
+	</title>
+	<script src ="http://jeremy.yosemite.edu/~armijoj/diceroll.js">
+	
+	</script>
+</head>
+<body>
+<center>
+  <form name=diceroll>
+    <table>
+      <tr>
+        <td align=center>
+          Number of Rolls (1-9)
+        </td>
+        <td align=center>
+          
+        </td>
+        <td align=center>
+          Results
+        </td>
+      </tr>
+      <tr>
+        <td align=center>
+          <input type=text name=myinput size=1>
+        </td>
+        <td align=center>
+          <input type=button name=roll value="Roll Dice" onClick="javascript:multiRoll(this.form)">
+        </td>
+        <td align=center>
+          <input type=text name=rolls size=15>
+        </td>
+      </tr>
+      
+    </table>
+    
+    <table>
+      <tr>
+        <td>
+          <img src="" name="mydice0">
+        </td>
+        <td>
+          <img src="" name="mydice1">
+        </td>
+        <td>
+          <img src="" name="mydice2">
+        </td>
+        
+      </tr>
+      <tr>
+        <td>
+          <img src="" name="mydice3">
+        </td>
+        <td>
+          <img src="" name="mydice4">
+        </td>
+        <td>
+          <img src="" name="mydice5">
+        </td>
+        
+      </tr>
+      <tr>
+        <td>
+          <img src="" name="mydice6">
+        </td>
+        <td>
+          <img src="" name="mydice7">
+        </td>
+        <td>
+          <img src="" name="mydice8">
+        </td>
+        
+      </tr>
+      
+    </table>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </form>
+  
+  
+  
+  
+  
+  
+  
+</center>
+</body>
+</html>
