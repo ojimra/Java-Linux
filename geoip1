@@ -1,0 +1,4 @@
+#!/bin/bash
+#geoip1
+
+sort -n /home/access_log | grep -v "10." | grep -v "::1" |  awk '{print $1}' | uniq > ip.lst
