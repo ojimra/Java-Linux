@@ -1,0 +1,9 @@
+#!/bin/bash
+#iplatlongdirect
+
+
+#Get ip, lat, and long data from visitors2 directory
+echo "select ip,latitude,longitude from visitors2;" | sqlite3 ipvisitors.sqlite > iplatlong.lst
+
+#Take the list created and import it to visitors3 directory
+echo ".import iplatlong.lst visitors3" | sqlite3 ipvisitors.sqlite
